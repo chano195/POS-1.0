@@ -1,35 +1,32 @@
-# Store Point of Sale
- Desktop Point of Sale app built with electron
- 
-  **Features:**
+# Tienda Punto de Venta
+  Aplicación de punto de venta de escritorio creada con electron
+   **Requisitos:**
+- NodeJs 14
+   **Características:**
 
-- Can be used by multiple PC's on a network with one central database.
-- Receipt Printing.
-- Search for product by barcode.
-- Staff accounts and permissions. 
-- Products and Categories.
-- Basic Stock Management.
-- Open Tabs (Orders).
-- Customer Database. 
-- Transaction History. 
-- Filter Transactions by Till, Cashier or Status. 
-- Filter Transactions by Date Range. 
+- Puede ser utilizado por múltiples PC en una red con una base de datos central.
+- Impresión de recibos.
+- Búsqueda de producto por código de barras.
+- Cuentas y permisos del personal.
+- Productos y Categorías.
+- Gestión básica de stock.
+- Pestañas abiertas (Pedidos).
+- Base de datos de cliente.
+- Historial de transacciones.
+- Filtrar transacciones por caja, cajero o estado.
+- Filtrar transacciones por rango de fechas.
 
- **To use on Windows:**
- [Download](http://www.storepointofsale.com/download/v1/StorePOS.msi) the MSI Installer
+  **Para usar en Windows:**
+  [Descargar](http://www.storepointofsale.com/download/v1/StorePOS.msi) el instalador de MSI
 
-The default username and password is  **admin**
+El nombre de usuario y la contraseña predeterminados son **admin**
 
-  **Looking for a Desktop Invoicing app?**
-  
- Check out the [Offline Invoicing](https://github.com/tngoman/Offline_Invoicing) app for freelancers.
+**Para personalizar/crear su propio instalador**
 
-**To Customize/Create your own installer**
-
-- Clone this project.
-- Open terminal and navigate into the cloned folder.
-- Run "npm install" to install dependencies.
-- Run "npm run electron". 
+- Clona este proyecto.
+- Abra la terminal y navegue hasta la carpeta clonada.
+- Ejecute "npm install" para instalar dependencias.
+- Ejecute "npm run electron".
 
 ![POS](https://github.com/tngoman/Store-POS/blob/master/screenshots/pos.jpg)
 
