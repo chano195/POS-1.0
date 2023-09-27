@@ -1,8 +1,3 @@
-const setupEvents = require('./installers/setupEvents')
- if (setupEvents.handleSquirrelEvent()) {
-    return;
- }
- 
 const server = require('./server');
 const {app, BrowserWindow, ipcMain} = require('electron');
 const path = require('path')
