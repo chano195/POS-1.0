@@ -1,8 +1,8 @@
 # Tienda Punto de Venta
   Aplicación de punto de venta de escritorio creada con electron
-   **Requisitos:**
+#  **Requisitos:**
 - NodeJs 14
-   **Características:**
+#  **Características:**
 
 - Puede ser utilizado por múltiples PC en una red con una base de datos central.
 - Impresión de recibos.
@@ -16,12 +16,12 @@
 - Filtrar transacciones por caja, cajero o estado.
 - Filtrar transacciones por rango de fechas.
 
-  **Para usar en Windows:**
+#  **Para usar en Windows:**
   [Descargar](http://www.storepointofsale.com/download/v1/StorePOS.msi) el instalador de MSI
 
 El nombre de usuario y la contraseña predeterminados son **admin**
 
-**Para personalizar/crear su propio instalador**
+# **Para personalizar/crear su propio instalador**
 
 - Clona este proyecto.
 - Abra la terminal y navegue hasta la carpeta clonada.
