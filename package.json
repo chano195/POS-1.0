@@ -1,8 +1,8 @@
 {
-  "name": "POS",
+  "name": "pos",
   "version": "0.1.0",
-  "description": "Store Point of Sale is a desktop application developed by Hosting Domain and available for free download at www.storepointofsale.com.",
-  "author": "Hosting Domain",
+  "description": "Aplicación de punto de venta de escritorio creada con electron\r #  **Requisitos:**\r - NodeJs 14\r #  **Características:**",
+  "author": "devlas",
   "private": true,
   "main": "start.js",
   "build": {
@@ -24,37 +24,37 @@
     }
   },
   "dependencies": {
-    "async": "^2.6.0",
-    "body-parser": "^1.18.2",
+    "async": "^3.2.4",
+    "body-parser": "^1.20.2",
     "btoa": "^1.2.1",
-    "electron-context-menu": "^0.15.1",
-    "electron-store": "^5.1.0",
-    "electron-winstaller": "^4.0.0",
-    "express": "^4.16.2",
-    "express-fileupload": "^1.1.6",
-    "html2canvas": "^1.0.0-rc.5",
-    "http": "0.0.0",
+    "electron-context-menu": "^3.6.1",
+    "electron-store": "^8.1.0",
+    "electron-winstaller": "^5.1.0",
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.1",
+    "html2canvas": "^1.4.1", 
     "https": "^1.0.0",
-    "is-port-reachable": "^2.0.1",
-    "jquery": "^3.4.1",
-    "jsbarcode": "^3.11.0",
-    "jspdf": "^2.3.1",
-    "macaddress": "^0.2.9",
-    "moment": "^2.24.0",
+    "is-port-reachable": "^4.0.0",
+    "jquery": "^3.7.1",
+    "jsbarcode": "^3.11.5",
+    "jspdf": "^2.5.1",
+    "macaddress": "^0.5.3",
+    "moment": "^2.29.4",
     "multer": "^1.4.2",
     "nedb": "^1.8.0",
-    "nodemon": "^1.14.12",
+    "npm-check-updates": "^16.14.4",
     "path": "^0.12.7",
-    "print-js": "^1.0.63",
-    "socket.io": "^2.4.0",
-    "sweetalert2": "^9.5.4",
+    "print-js": "^1.6.0",
+    "socket.io": "^4.7.2",
+    "sweetalert2": "^11.7.31",
     "xmlhttprequest": "^1.8.0"
   },
   "scripts": {
     "electron": "cross-env NODE_ENV=dev nodemon --exec \"\"electron .\"\"",
     "electron-build": "electron-builder",
     "build-linux": "electron-builder --linux",
-    "build-windows": "electron-builder --win"
+    "build-windows": "electron-builder --win",
+    "start": "node server.js"
   },
   "browserslist": {
     "production": [
@@ -69,11 +69,20 @@
     ]
   },
   "devDependencies": {
-    "cross-env": "^6.0.3",
-    "electron": ">=13.6.6",
+    "cross-env": "^7.0.3",
+    "electron": "^26.2.4",
     "electron-builder": "^24.6.4",
-    "electron-is-dev": "^1.1.0",
+    "electron-is-dev": "^2.0.0",
     "electron-packager": "^17.1.2",
-    "nodemon": "^1.19.3"
-  }
+    "nodemon": "^3.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chano195/POS-1.0.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chano195/POS-1.0/issues"
+  },
+  "homepage": "https://github.com/chano195/POS-1.0#readme"
 }

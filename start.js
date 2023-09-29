@@ -1,9 +1,9 @@
 const server = require('./server');
 const {app, BrowserWindow, ipcMain} = require('electron');
 const path = require('path')
-
+const Store = require('electron-store');
+const store = new Store();
 const contextMenu = require('electron-context-menu');
-
 let mainWindow
 
 function createWindow() {
@@ -23,17 +23,25 @@ function createWindow() {
   mainWindow.maximize();
   mainWindow.show();
 
-  mainWindow.loadURL(
-    `file://${path.join(__dirname, 'index.html')}`
-  )
-
+  mainWindow.loadFile('index.html')
+  
   mainWindow.on('closed', () => {
     mainWindow = null
   })
 }
 
+app.on('ready', () => {
+  createWindow()
 
-app.on('ready', createWindow)
+  ipcMain.on('get-app-info', (event) => {
+    event.returnValue = {
+      appPath: app.getAppPath(),
+      version: app.getVersion(),
+      // Agrega cualquier otra información que necesites aquí
+    };
+  });
+});
+
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
@@ -43,8 +51,11 @@ app.on('window-all-closed', () => {
 
 app.on('activate', () => {
   if (mainWindow === null) {
-    createWindow()
-  }
+    app.whenReady().then(() => {
+      createWindow()})
+    }
+
+  
 })
 
 

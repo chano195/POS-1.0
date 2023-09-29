@@ -30,9 +30,9 @@ let Swal = require('sweetalert2');
 let { ipcRenderer } = require('electron');
 let dotInterval = setInterval(function () { $(".dot").text('.') }, 3000);
 let Store = require('electron-store');
-const remote = require('electron').remote;
-const app = remote.app;
-let img_path = app.getPath('appData') + '/POS/uploads/';
+const appInfo = ipcRenderer.sendSync('get-app-info');
+
+let img_path = appInfo.appPath + '/POS/uploads/';
 let api = 'http://' + host + ':' + port + '/api/';
 let btoa = require('btoa');
 let jsPDF = require('jspdf');
