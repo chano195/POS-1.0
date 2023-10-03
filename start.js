@@ -16,7 +16,9 @@ function createWindow() {
     webPreferences: {
       nodeIntegration: true,
       enableRemoteModule: true,
-      contextIsolation: false
+      contextIsolation: false,
+      webSecurity: false,
+      
     },
   });
 
@@ -35,8 +37,9 @@ app.on('ready', () => {
 
   ipcMain.on('get-app-info', (event) => {
     event.returnValue = {
-      appPath: app.getAppPath(),
-      version: app.getVersion(),
+      path: app.getAppPath(),
+      appData: app.getPath('appData')
+      
       // Agrega cualquier otra información que necesites aquí
     };
   });

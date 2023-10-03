@@ -1,3 +1,4 @@
+
 let cart = [];
 let index = 0;
 let allUsers = [];
@@ -22,17 +23,22 @@ let order_index = 0;
 let user_index = 0;
 let product_index = 0;
 let transaction_index;
+// En pos.js, puedes recibir app y path como argumentos
+
+const {ipcRenderer} = require('electron');
 let host = 'localhost';
-let path = require('path');
 let port = '8001';
 let moment = require('moment');
 let Swal = require('sweetalert2');
-let { ipcRenderer } = require('electron');
 let dotInterval = setInterval(function () { $(".dot").text('.') }, 3000);
 let Store = require('electron-store');
-const appInfo = ipcRenderer.sendSync('get-app-info');
 
-let img_path = appInfo.appPath + '/POS/uploads/';
+let appInfo =ipcRenderer.sendSync('get-app-info');
+
+
+let img_path = appInfo.appData + '/POS/uploads/';
+console.log(img_path)
+
 let api = 'http://' + host + ':' + port + '/api/';
 let btoa = require('btoa');
 let jsPDF = require('jspdf');
@@ -488,7 +494,7 @@ if (auth == undefined) {
                                 $('<div>', { class: 'input-group-btn btn-xs' }).append(
                                     $('<button>', {
                                         class: 'btn btn-default btn-xs',
-                                     
+                                    
                                         onclick: '$(this).qtIncrement(' + index + ')'
                                     }).append(
                                         $('<i>', { class: 'fa fa-plus' })
@@ -756,7 +762,7 @@ if (auth == undefined) {
             </thead>
             <tbody>
             ${items}                
-     
+    
             <tr>                        
                 <td><b>Subtotal</b></td>
                 <td>:</td>
@@ -784,8 +790,8 @@ if (auth == undefined) {
             <hr>
             <br>
             <p style="text-align: center;">
-             ${settings.footer}
-             </p>
+            ${settings.footer}
+            </p>
             </div>`;
 
 
@@ -1167,14 +1173,14 @@ if (auth == undefined) {
 
                     loadProducts();
                     Swal.fire({
-                        title: 'Product Saved',
-                        text: "Select an option below to continue.",
+                        title: 'Producto guardado',
+                        text: "Seleccione una de las siguientes opciones para continuar.",
                         icon: 'success',
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
-                        confirmButtonText: 'Add another',
-                        cancelButtonText: 'Close'
+                        confirmButtonText: 'Agrega otro',
+                        cancelButtonText: 'Cerrar'
                     }).then((result) => {
 
                         if (!result.value) {
@@ -1555,7 +1561,7 @@ if (auth == undefined) {
                 counter++;
 
                 category_list += `<tr>
-     
+    
             <td>${category.name}</td>
             <td><span class="btn-group"><button onClick="$(this).editCategory(${index})" class="btn btn-warning"><i class="fa fa-edit"></i></button><button onClick="$(this).deleteCategory(${category._id})" class="btn btn-danger"><i class="fa fa-trash"></i></button></span></td></tr>`;
             });
@@ -2219,7 +2225,7 @@ $.fn.viewTransaction = function (index) {
         </thead>
         <tbody>
         ${items}                
- 
+
         <tr>                        
             <td><b>Subtotal</b></td>
             <td>:</td>
@@ -2247,8 +2253,8 @@ $.fn.viewTransaction = function (index) {
         <hr>
         <br>
         <p style="text-align: center;">
-         ${settings.footer}
-         </p>
+        ${settings.footer}
+        </p>
         </div>`;
 
     $('#viewTransaction').html('');
@@ -2359,5 +2365,3 @@ $('#quit').click(function () {
         }
     });
 });
-
-

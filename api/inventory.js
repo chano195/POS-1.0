@@ -10,13 +10,13 @@ const fs = require('fs');
 
 const storage = multer.diskStorage({
     destination: process.env.APPDATA+'/POS/uploads',
+
     filename: function(req, file, callback){
         callback(null, Date.now() + '.jpg'); // 
     }
 });
 
-
-let upload = multer({storage: storage});
+const upload = multer({ storage });
 
 app.use(bodyParser.json());
 
