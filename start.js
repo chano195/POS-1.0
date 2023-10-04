@@ -5,6 +5,7 @@ const Store = require('electron-store');
 const store = new Store();
 const contextMenu = require('electron-context-menu');
 let mainWindow
+if (require('electron-squirrel-startup')) app.quit();
 
 function createWindow() {
   mainWindow = new BrowserWindow({

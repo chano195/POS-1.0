@@ -13,13 +13,11 @@
   overflow: auto;
 }
 
-#parent { 
-  display: block; 
-  height: calc(100vh - 215px);
+#parent-container { 
+  min-height: calc(100vh - 215px);
   overflow: auto;
   overflow: hidden;
 }
-
 
 .order-box{
 background-color: grey;
@@ -27,6 +25,7 @@ color: #FFFFFF;
 }
 
 #parent .box {
+  padding: 30px 0px 10px 0;
   margin-bottom: 10px;
   text-align: center;
   display: block;

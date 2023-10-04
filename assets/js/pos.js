@@ -224,9 +224,9 @@ if (auth == undefined) {
                         categories.push(item.category);
                     }
 
-                    let item_info = `<div class="col-lg-2 box ${item.category}"
+                    let item_info = `<div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xxl-2 p-2 ${item.category}"
                                 onclick="$(this).addToCart(${item._id}, ${item.quantity}, ${item.stock})">
-                            <div class="widget-panel widget-style-2 ">                    
+                            <div class="widget-panel widget-style-2 box">                    
                             <div id="image"><img src="${item.img == "" ? "./assets/images/default.jpg" : img_path + item.img}" id="product_img" alt=""></div>                    
                                         <div class="text-muted m-t-5 text-center">
                                         <div class="name" id="product_name">${item.name}</div> 

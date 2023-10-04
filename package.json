@@ -1,7 +1,46 @@
 {
   "name": "pos",
   "version": "0.1.0",
-  "description": "Aplicación de punto de venta de escritorio creada con electron\r #  **Requisitos:**\r - NodeJs 14\r #  **Características:**",
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          
+          "config": {
+            "name": "Instalador win"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "windows"
+          ],
+          "config": {
+            "name": "zip"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "platforms": [
+            "linux"
+          ],
+          "config": {
+            "name": "Instalador linux"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {
+            "name": "Instalador MacOs"
+          }
+          
+        }
+      ]
+    }
+  },
+  "description": "Punto de venta",
   "author": "devlas",
   "private": true,
   "main": "start.js",
@@ -28,11 +67,11 @@
     "body-parser": "^1.20.2",
     "btoa": "^1.2.1",
     "electron-context-menu": "^3.6.1",
+    "electron-squirrel-startup": "^1.0.0",
     "electron-store": "^8.1.0",
-    "electron-winstaller": "^5.1.0",
     "express": "^4.18.2",
     "express-fileupload": "^1.4.1",
-    "html2canvas": "^1.4.1", 
+    "html2canvas": "^1.4.1",
     "https": "^1.0.0",
     "is-port-reachable": "^4.0.0",
     "jquery": "^3.7.1",
@@ -54,7 +93,10 @@
     "electron-build": "electron-builder",
     "build-linux": "electron-builder --linux",
     "build-windows": "electron-builder --win",
-    "start": "node server.js"
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish"
   },
   "browserslist": {
     "production": [
@@ -69,11 +111,15 @@
     ]
   },
   "devDependencies": {
+    "@electron-forge/cli": "^6.4.2",
+    "@electron-forge/maker-deb": "^6.4.2",
+    "@electron-forge/maker-rpm": "^6.4.2",
+    "@electron-forge/maker-squirrel": "^6.4.2",
+    "@electron-forge/maker-zip": "^6.4.2",
+    "@electron-forge/plugin-auto-unpack-natives": "^6.4.2",
     "cross-env": "^7.0.3",
     "electron": "^26.2.4",
-    "electron-builder": "^24.6.4",
     "electron-is-dev": "^2.0.0",
-    "electron-packager": "^17.1.2",
     "nodemon": "^3.0.1"
   },
   "repository": {
