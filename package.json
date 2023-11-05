@@ -7,7 +7,6 @@
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
-          
           "config": {
             "name": "Instalador win"
           }
@@ -35,7 +34,6 @@
           "config": {
             "name": "Instalador MacOs"
           }
-          
         }
       ]
     }
@@ -86,6 +84,7 @@
     "print-js": "^1.6.0",
     "socket.io": "^4.7.2",
     "sweetalert2": "^11.7.31",
+    "uuid": "^9.0.1",
     "xmlhttprequest": "^1.8.0"
   },
   "scripts": {

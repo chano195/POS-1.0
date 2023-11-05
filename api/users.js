@@ -3,6 +3,8 @@ const server = require( "http" ).Server( app );
 const bodyParser = require( "body-parser" );
 const Datastore = require( "nedb" );
 const btoa = require('btoa');
+const port = 8001;
+const { v4: uuidv4 } = require('uuid');
 app.use( bodyParser.json() );
 
 module.exports = app;
@@ -101,53 +103,57 @@ app.delete( "/user/:userId", function ( req, res ) {
 } );
 
  
-app.post( "/post" , function ( req, res ) {   
+app.post( "/user/" , function ( req, res ) {   
+    const userId = uuidv4();
+
     let User = { 
-            "username": req.body.username,
-            "password": btoa(req.body.password),
-            "fullname": req.body.fullname,
-            "perm_products": req.body.perm_products == "on" ? 1 : 0,
-            "perm_categories": req.body.perm_categories == "on" ? 1 : 0,
-            "perm_transactions": req.body.perm_transactions == "on" ? 1 : 0,
-            "perm_users": req.body.perm_users == "on" ? 1 : 0,
-            "perm_settings": req.body.perm_settings == "on" ? 1 : 0,
-            "status": ""
-          }
+        "_id": userId,
+        "username": req.body.username,
+        "password": btoa(req.body.password),
+        "fullname": req.body.fullname,
+        "perm_products": req.body.perm_products == "on" ? 1 : 0,
+        "perm_categories": req.body.perm_categories == "on" ? 1 : 0,
+        "perm_transactions": req.body.perm_transactions == "on" ? 1 : 0,
+        "perm_users": req.body.perm_users == "on" ? 1 : 0,
+        "perm_settings": req.body.perm_settings == "on" ? 1 : 0,
+        "status": ""
+        }
 
-    if(req.body.id == "") { 
-       User._id = Math.floor(Date.now() / 1000);
-       usersDB.insert( User, function ( err, user ) {
-            if ( err ) res.status( 500 ).send( req );
-            else res.send( user );
-        });
-    }
-    else { 
-        usersDB.update( {
-            _id: parseInt(req.body.id)
-                    }, {
-                        $set: {
-                            username: req.body.username,
-                            password: btoa(req.body.password),
-                            fullname: req.body.fullname,
-                            perm_products: req.body.perm_products == "on" ? 1 : 0,
-                            perm_categories: req.body.perm_categories == "on" ? 1 : 0,
-                            perm_transactions: req.body.perm_transactions == "on" ? 1 : 0,
-                            perm_users: req.body.perm_users == "on" ? 1 : 0,
-                            perm_settings: req.body.perm_settings == "on" ? 1 : 0
-                        }
-                    }, {}, function (
-            err,
-            numReplaced,
-            user
-        ) {
-            if ( err ) res.status( 500 ).send( err );
-            else res.sendStatus( 200 );
-        } );
-
-    }
-
+    usersDB.insert(User, function (err, user) {
+        if (err) {
+            res.status(500).send(req);
+        } else {
+            res.send(user);
+        }
+    });
+    
 });
+// Ruta para actualizar un usuario existente por su ID
+app.put('/user/:_id', (req, res) => {
+    const userId = req.params._id; // Get the user ID from the URL parameters
 
+    // Define the fields you want to update
+    const updatedUser = {
+        username: req.body.username,
+        password: btoa(req.body.password),
+        fullname: req.body.fullname,
+        perm_products: req.body.perm_products == 'on' ? 1 : 0,
+        perm_categories: req.body.perm_categories == 'on' ? 1 : 0,
+        perm_transactions: req.body.perm_transactions == 'on' ? 1 : 0,
+        perm_users: req.body.perm_users == 'on' ? 1 : 0,
+        perm_settings: req.body.perm_settings == 'on' ? 1 : 0,
+        status: req.body.status // Make sure to provide the appropriate status value
+    };
+
+    // Update the user in the database by their ID
+    usersDB.update({ _id: userId }, { $set: updatedUser }, {}, (err, numReplaced) => {
+        if (err) {
+            res.status(500).send('Error updating the user');
+        } else {
+            res.status(200).send('User updated successfully');
+        }
+    });
+});
 
 app.get( "/check", function ( req, res ) {
     usersDB.findOne( {

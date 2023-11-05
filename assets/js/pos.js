@@ -338,16 +338,16 @@ if (auth == undefined) {
                     }
                     else if (data.quantity < 1) {
                         Swal.fire(
-                            'Out of stock!',
-                            'This item is currently unavailable',
+                            '¡Agotado!',
+                            'Este artículo no está disponible actualmente',
                             'info'
                         );
                     }
                     else {
 
                         Swal.fire(
-                            'Not Found!',
-                            '<b>' + $("#skuCode").val() + '</b> is not a valid barcode!',
+                            'No Encontrado!',
+                            '<b>' + $("#skuCode").val() + '</b> No es un código de barras válido!',
                             'warning'
                         );
 
@@ -477,23 +477,23 @@ if (auth == undefined) {
                         $('<td>', { text: data.product_name }),
                         $('<td>').append(
                             $('<div>', { class: 'input-group' }).append(
-                                $('<div>', { class: 'input-group-btn btn-xs' }).append(
+                                $('<div>', { class: 'input-group-btn' }).append(
                                     $('<button>', {
-                                        class: 'btn btn-default btn-xs',
+                                        class: 'btn btn-light',
                                         onclick: '$(this).qtDecrement(' + index + ')'
                                     }).append(
                                         $('<i>', { class: 'fa fa-minus' })
                                     )
                                 ),
                                 $('<input>', {
-                                    class: 'form-control ',
+                                    class: 'form-control mx-1 ',
                                     type: 'number',
                                     value: data.quantity,
                                     onInput: '$(this).qtInput(' + index + ')'
                                 }),
-                                $('<div>', { class: 'input-group-btn btn-xs' }).append(
+                                $('<div>', { class: 'input-group-btn' }).append(
                                     $('<button>', {
-                                        class: 'btn btn-default btn-xs',
+                                        class: 'btn btn-light',
                                     
                                         onclick: '$(this).qtIncrement(' + index + ')'
                                     }).append(
